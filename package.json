@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-slider-component": "^3.2.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
@@ -20,6 +21,9 @@
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.11.3",
     "less-loader": "^6.1.1",
+    "node-sass": "^4.14.1",
+    "sass": "^1.26.11",
+    "sass-loader": "^10.0.2",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

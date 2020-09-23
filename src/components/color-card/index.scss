@@ -1,0 +1,62 @@
+@import "../../app/mixin";
+
+.color-card {
+  width: 100%;
+  height: auto;
+  @include card;
+  @include E500;
+  transition: all 0.2s ease-in-out;
+
+  &:last-child {
+    margin-bottom: $pageBleeding;
+  }
+
+  &.active {
+    -webkit-animation: shadowFadeIn 0.3s ease-in-out forwards;
+  }
+
+  &:hover {
+    @include E200;
+  }
+
+  & + .color-card {
+    margin-top: calc(#{$pageBleeding} / 2);
+  }
+
+  &__header {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin-bottom: 14px;
+
+    label {
+      display: inline-block;
+      flex: 1 1 auto;
+      font-size: 14px;
+      color: $l-subtle-text;
+    }
+
+    span.icon {
+      display: inline-block;
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      background-color: $l-subtle-text;
+    }
+  }
+
+  &__palatte {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: $l-background;
+    @include E200;
+    overflow: hidden;
+    border-radius: 10px;
+
+    &__box {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

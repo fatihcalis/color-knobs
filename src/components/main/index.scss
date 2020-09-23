@@ -1,0 +1,121 @@
+@import "../../app/mixin";
+
+main {
+  grid-area: main;
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: $pageBleeding / 2;
+  padding-left: calc((2 * #{$pageBleeding}) + #{$sideMenuWidth});
+  padding-right: $pageBleeding;
+  margin-left: auto;
+  margin-right: auto;
+
+  aside {
+    position: fixed;
+    left: $pageBleeding;
+    display: flex;
+    flex-direction: column;
+    width: $sideMenuWidth;
+    height: calc(100% - #{$headerHeight} - #{$footerHeight} - #{$pageBleeding});
+    top: calc(#{$headerHeight} + (#{$pageBleeding} / 2));
+
+    .side-menu {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1 auto;
+      width: 100%;
+      height: auto;
+      max-height: calc(100% - 52px);
+      @include card;
+      @include E500;
+      padding: 0;
+
+      &__header {
+        display: flex;
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        padding: 15px 20px;
+        background-color: $l-background;
+        border-bottom: 1px solid #dde2e8;
+
+        b {
+          display: block;
+          flex: 1 1 auto;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 24px;
+        }
+
+        span.icon {
+          display: block;
+          flex: 0 0 auto;
+          width: 24px;
+          height: 24px;
+          background-color: $l-subtle-text;
+        }
+      }
+
+      &__content {
+        flex: 1 1 auto;
+        width: 100%;
+        height: auto;
+        padding: 15px 20px;
+        overflow: auto;
+
+        &__settings {
+          label {
+            display: block;
+            width: 100%;
+            height: auto;
+            font-size: 14px;
+            color: $l-subtle-text;
+            margin-bottom: 6px;
+          }
+
+          .slider {
+            width: 100%;
+            height: 43px;
+            background-color: $l-subtle-text;
+          }
+
+          & + .side-menu__content__settings {
+            margin-top: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  section {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.section-header {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+
+  span {
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 500;
+  }
+}
+
+@keyframes shadowFadeIn {
+  0% {
+    @include E200;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    @include E-200;
+    background-color: darken($l-background, 1%);
+  }
+}

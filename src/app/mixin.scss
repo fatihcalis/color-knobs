@@ -1,0 +1,51 @@
+// Color
+
+$l-background-grad: linear-gradient(135deg, 0 #f1f1f5, 100% #f0f0f3);
+$l-background: #f0f0f3;
+$l-text: #303747;
+$l-subtle-text: #505e78;
+
+// Size
+
+$headerHeight: 76px;
+$footerHeight: 40px;
+$borderRadius: 18px;
+$pageBleeding: 60px;
+$sideMenuWidth: 348px;
+$cardpadding: 20px;
+
+// Elevations
+
+@mixin card {
+  border-radius: $borderRadius;
+  background-color: $l-background;
+  padding: $cardpadding;
+}
+
+@mixin E500 {
+  box-shadow: 13px 13px 26px rgba(#3c475b, 0.12),
+    -13px -13px 26px rgba(#fff, 0.9);
+}
+
+@mixin E200 {
+  box-shadow: 5px 5px 12px rgba(#3c475b, 0.1), -5px -5px 12px rgba(#fff, 0.8);
+}
+
+@mixin E50 {
+  box-shadow: 3px 3px 6px rgba(#3c475b, 0.1), -3px -3px 6px rgba(#fff, 0.8);
+}
+
+@mixin E-500 {
+  box-shadow: inset 13px 13px 26px rgba(#3c475b, 0.12),
+    inset -13px -13px 26px rgba(#fff, 1);
+}
+
+@mixin E-200 {
+  box-shadow: inset 5px 5px 12px rgba(#3c475b, 0.1),
+    inset -5px -5px 12px rgba(#fff, 1);
+}
+
+@mixin E-50 {
+  box-shadow: inset 3px 3px 6px rgba(#3c475b, 0.1),
+    inset -3px -3px 6px rgba(#fff, 1);
+}

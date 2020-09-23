@@ -1,0 +1,34 @@
+@import "./mixin";
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  background: $l-background;
+  color: $l-text;
+  overflow: hidden;
+}
+
+.page-wrapper {
+  display: grid;
+  grid-template-rows: 76px 1fr 40px;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
