@@ -22,7 +22,7 @@ body {
 }
 
 .page-wrapper {
-  display: grid;
+  display: none;
   grid-template-rows: 76px 1fr 40px;
   grid-template-areas:
     "header"
