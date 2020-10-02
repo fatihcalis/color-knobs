@@ -6,14 +6,10 @@ header {
   width: 100%;
   height: $headerHeight;
   padding: 0 60px;
-  background: linear-gradient(
-    135 deg,
-    0 rgba(#f2f2f6, 0.2),
-    100% rgba(#f1f1f4, 0.2)
-  );
+  background-color: rgba($l-background, 0.5);
   z-index: 100;
-  -webkit-backdrop-filter: blur(72px);
-  backdrop-filter: blur(72px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   grid-area: header;
 
   .header {

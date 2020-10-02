@@ -1,18 +1,158 @@
-.slider-dot {
-  width: 25px;
-  height: 25px;
-  background-color: red;
-  border-radius: 25px;
+@import "../../app/mixin";
+
+body {
+  .slider-dot {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background-color: darken($l-background, 2%);
+    border-radius: 12px;
+    box-shadow: 3px 3px 6px rgba(60, 71, 91, 0.14), -3px -3px 6px rgba(white, 0.8);
+    cursor: ew-resize;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &:active {
+      .slider-dot__handle {
+        &::after {
+          opacity: 0;
+        }
+
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__handle {
+      position: absolute;
+      top: calc(50% - 7px);
+      left: calc(50% - 7px);
+      display: block;
+      width: 14px;
+      height: 14px;
+      border-radius: 8px;
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      content: '';
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        background-color: darken($l-background, 2%);
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        content: '';
+        @include E50;
+      }
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        background-color: darken($l-background, 2%);
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        content: '';
+        @include E-50;
+        opacity: 0;
+      }
+    }
+
+    // &::after {
+    //   position: absolute;
+    //   top: calc(50% - 7px);
+    //   left: calc(50% - 7px);
+    //   display: block;
+    //   width: 14px;
+    //   height: 14px;
+    //   border-radius: 8px;
+    //   background-color: darken($l-background, 2%);
+    //   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    //   content: '';
+    //   @include E50;
+    // }
+  }
+
+  .slider-process {
+    display: none;
+  }
+
+  .vue-slider {
+    height: 8px !important;
+    margin-top: 20px;
+
+    &-rail {
+      background-color: $slider;
+      box-shadow: inset 2px 2px 4px rgba(#3c475b, 0.1), inset -2px -2px 4px rgba(#fff, 1);
+    }
+
+    &-dot {
+      width: 24px !important;
+      height: 24px !important;
+
+      &-tooltip {
+        visibility: visible;
+        color: $l-subtle-text;
+        font-size: 12px;
+        opacity: 0.8;
+
+        &-top {
+          top: -4px;
+        }
+      }
+    }
+  }
 }
 
-.slider-tooltip {
-  color: white;
-  background-color: green;
-}
+// @keyframes shadowFadeIn {
+//   0% {
+//     @include E50;
+//   }
+//   // 50% {
+//   //   box-shadow: none;
+//   // }
+//   100% {
+//     @include E-50;
+//     // background-color: red;
+//     // background-color: darken($l-background, 1%);
+//   }
+// }
 
-.slider-process {
-  position: absolute;
-  z-index: 1;
-  border-radius: 15px;
-  background-color: blueviolet;
-}
+// @keyframes shadowFadeOut {
+//   0% {
+//     @include E-50;
+//     // background-color: red;
+//   }
+//   // 50% {
+//   //   box-shadow: none;
+//   // }
+//   100% {
+//     @include E50;
+//     // background-color: darken($l-background, 1%);
+//   }
+// }
+
+
+
+
+
+
+
+// .vue-slider {
+//   display: none;
+//   &-rail {
+//     color: yellow;
+//   }
+
+//   .vue-slider-rail {
+//     color: yellow;
+//   }
+// }
+
+

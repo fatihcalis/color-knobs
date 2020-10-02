@@ -2,6 +2,7 @@
 
 $l-background-grad: linear-gradient(135deg, 0 #f1f1f5, 100% #f0f0f3);
 $l-background: #f0f0f3;
+$slider: #F1F1F5;
 $l-text: #303747;
 $l-subtle-text: #505e78;
 
@@ -46,6 +47,5 @@ $cardpadding: 20px;
 }
 
 @mixin E-50 {
-  box-shadow: inset 3px 3px 6px rgba(#3c475b, 0.1),
-    inset -3px -3px 6px rgba(#fff, 1);
+  box-shadow: inset 3px 3px 6px rgba(#3c475b, 0.1), inset -3px -3px 6px rgba(#fff, 1);
 }

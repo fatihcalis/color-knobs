@@ -3,10 +3,11 @@
     :min="min"
     :max="max"
     v-model="value"
-    :railStyle="{ 'background-color': 'pink', height: '20px' }"
   >
     <template v-slot:dot>
-      <div class="slider-dot" />
+      <div class="slider-dot">
+        <div class="slider-dot__handle" />
+        </div>
     </template>
 
     <template v-slot:tooltip="{ value }">
