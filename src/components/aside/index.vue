@@ -1,6 +1,7 @@
 <template>
   <aside>
-    <div class="section-header">
+    <div class="control-menu">
+      <div class="section-header">
       <span>Palette settings</span>
     </div>
     <div class="side-menu">
@@ -363,6 +364,8 @@
         </div>
       </div>
     </div>
+    </div>
+    <footer></footer>
   </aside>
 </template>
 
@@ -370,7 +373,7 @@
 import Slider from "../slider/index";
 
 export default {
-  name: "ControlMenu",
+  name: "aside",
   components: {
     Slider,
   },

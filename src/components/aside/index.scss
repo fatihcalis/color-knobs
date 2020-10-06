@@ -6,8 +6,24 @@ aside {
   display: flex;
   flex-direction: column;
   width: $sideMenuWidth;
-  height: calc(100% - #{$headerHeight} - #{$footerHeight} - #{$pageBleeding});
+  height: calc(100% - #{$headerHeight} - (#{$pageBleeding} / 2));
   top: calc(#{$headerHeight} + (#{$pageBleeding} / 2));
+
+  .control-menu {
+    width: 100%;
+    height: calc(100% - #{$footerHeight} - 20px);
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer {
+    flex: 0 0 auto;
+    width: $sideMenuWidth;
+    height: #{$footerHeight};
+    margin-top: 20px;
+    background-color:rgb(123, 137, 141);
+  }
 
   .side-menu {
     display: flex;

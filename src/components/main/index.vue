@@ -1,6 +1,6 @@
 <template>
   <main>
-    <ControlMenu></ControlMenu>
+    <Aside></Aside>
     <section>
       <div class="section-header">
         <span>Your color palette</span>
@@ -19,14 +19,14 @@
 
 <script>
 import ColorCard from "../color-card/index";
-import ControlMenu from "../control-menu/index";
+import Aside from "../aside/index";
 import { mockedPalettes } from "../../mock/index";
 
 export default {
   name: "Main",
   components: {
     ColorCard,
-    ControlMenu,
+    Aside,
   },
   data() {
     return {
