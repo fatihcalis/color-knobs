@@ -6,8 +6,14 @@
   >
     <template v-slot:dot>
       <div class="slider-dot">
-        <div class="slider-dot__handle" />
+        <div class="slider-dot__shadow slider-dot__shadow--left" />
+        <div class="slider-dot__shadow slider-dot__shadow--right" />
+        <div class="slider-dot__point-box">
+          <div class="slider-dot__point-box__point" />
+          <div class="slider-dot__point-box__point" />
+          <div class="slider-dot__point-box__point" />
         </div>
+      </div>
     </template>
 
     <template v-slot:tooltip="{ value }">

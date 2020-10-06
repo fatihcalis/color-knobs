@@ -28,6 +28,7 @@ aside {
       padding: 15px 20px;
       background-color: $l-background;
       border-bottom: 1px solid #dde2e8;
+      border-radius: 18px 18px 0 0;
 
       b {
         display: block;
@@ -50,7 +51,7 @@ aside {
       flex: 1 1 auto;
       width: 100%;
       height: auto;
-      padding: 15px 20px;
+      padding: 15px 25px 30px 25px;
       overflow: auto;
 
       &__settings {
