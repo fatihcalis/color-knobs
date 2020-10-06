@@ -7,7 +7,7 @@ body {
     height: 24px;
     background-color: darken($l-background, 2%);
     border-radius: 12px;
-    box-shadow: 3px 3px 6px rgba(60, 71, 91, 0.14), -3px -3px 6px rgba(white, 0.8);
+    box-shadow: 4px 4px 8px rgba(60, 71, 91, 0.20), -4px -4px 8px rgba(white, 0.9);
     cursor: ew-resize;
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 
@@ -63,20 +63,6 @@ body {
         opacity: 0;
       }
     }
-
-    // &::after {
-    //   position: absolute;
-    //   top: calc(50% - 7px);
-    //   left: calc(50% - 7px);
-    //   display: block;
-    //   width: 14px;
-    //   height: 14px;
-    //   border-radius: 8px;
-    //   background-color: darken($l-background, 2%);
-    //   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    //   content: '';
-    //   @include E50;
-    // }
   }
 
   .slider-process {
@@ -85,7 +71,7 @@ body {
 
   .vue-slider {
     height: 8px !important;
-    margin-top: 20px;
+    padding: 4px 0 !important;
 
     &-rail {
       background-color: $slider;
@@ -109,50 +95,5 @@ body {
     }
   }
 }
-
-// @keyframes shadowFadeIn {
-//   0% {
-//     @include E50;
-//   }
-//   // 50% {
-//   //   box-shadow: none;
-//   // }
-//   100% {
-//     @include E-50;
-//     // background-color: red;
-//     // background-color: darken($l-background, 1%);
-//   }
-// }
-
-// @keyframes shadowFadeOut {
-//   0% {
-//     @include E-50;
-//     // background-color: red;
-//   }
-//   // 50% {
-//   //   box-shadow: none;
-//   // }
-//   100% {
-//     @include E50;
-//     // background-color: darken($l-background, 1%);
-//   }
-// }
-
-
-
-
-
-
-
-// .vue-slider {
-//   display: none;
-//   &-rail {
-//     color: yellow;
-//   }
-
-//   .vue-slider-rail {
-//     color: yellow;
-//   }
-// }
 
 
