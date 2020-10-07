@@ -60,6 +60,7 @@ body {
 
     &-rail {
       background-color: $slider;
+      cursor: pointer;
       box-shadow: inset 2px 2px 4px rgba(#3c475b, 0.1), inset -2px -2px 4px rgba(#fff, 1);
     }
 
