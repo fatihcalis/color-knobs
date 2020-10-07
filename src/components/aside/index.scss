@@ -17,14 +17,6 @@ aside {
     flex-direction: column;
   }
 
-  footer {
-    flex: 0 0 auto;
-    width: $sideMenuWidth;
-    height: #{$footerHeight};
-    margin-top: 20px;
-    background-color:rgb(123, 137, 141);
-  }
-
   .side-menu {
     display: flex;
     flex-direction: column;
@@ -71,13 +63,19 @@ aside {
       overflow: auto;
 
       &__settings {
+        margin-bottom: 40px;
+
+        &:last-child {
+          margin-bottom: 20px;
+        }
+
         label {
           display: block;
           width: 100%;
           height: auto;
           font-size: 14px;
           color: $l-subtle-text;
-          margin-bottom: 6px;
+          margin-bottom: 10px;
         }
     
         .dials {

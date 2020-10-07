@@ -2,6 +2,7 @@
   <vue-slider
     :min="min"
     :max="max"
+    :tooltip-placement="[`bottom`,`bottom`]"
     v-model="value"
   >
     <template v-slot:dot>

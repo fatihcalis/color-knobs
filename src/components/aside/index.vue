@@ -365,17 +365,19 @@
       </div>
     </div>
     </div>
-    <footer></footer>
+    <Footer />
   </aside>
 </template>
 
 <script>
 import Slider from "../slider/index";
+import Footer from "../footer/index";
 
 export default {
   name: "aside",
   components: {
     Slider,
+    Footer
   },
   data() {
     return {

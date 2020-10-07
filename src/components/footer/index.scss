@@ -1,6 +1,9 @@
+@import "../../app/mixin.scss";
+
 footer {
-  grid-area: footer;
-  background-color: blue;
-  position: sticky;
-  bottom: 0;
+  flex: 0 0 auto;
+  width: $sideMenuWidth;
+  height: #{$footerHeight};
+  margin-top: 20px;
+  background-color:rgb(123, 137, 141);
 }
