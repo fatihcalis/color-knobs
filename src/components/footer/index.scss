@@ -5,5 +5,18 @@ footer {
   width: $sideMenuWidth;
   height: #{$footerHeight};
   margin-top: 20px;
-  background-color:rgb(123, 137, 141);
+
+  p,
+  a {
+    font-size: 12px;
+    color: rgba($l-text, 0.6);
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      color: rgba($l-text, 0.8);
+    }
+  }
 }
