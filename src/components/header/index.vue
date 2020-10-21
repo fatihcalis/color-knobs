@@ -6,10 +6,11 @@
       </div>
       <div class="header__wrapper__action-box">
         <div class="header__wrapper__action-box__item">
-          <Night />
+          <icon name="night" />
         </div>
         <div class="header__wrapper__action-box__item">
           <button class="share-btn">
+             <icon name="twitter" />
             <p>Share</p>
           </button>
         </div>
@@ -20,13 +21,13 @@
 
 <script>
 import LogoLight from '../../assets/logo/logo-light_theme@2x.png'
-import Night from '../../assets/icons/night.svg'
+import Icon from '../shared/icon'
 
 export default {
   name: "Header",
 
   components: {
-    Night,
+    Icon,
   },
 
   data: function () {
