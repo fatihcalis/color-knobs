@@ -40,6 +40,14 @@ header {
         justify-content: flex-end;
         flex: 1 1 auto;
 
+        &__divider {
+          display: block;
+          width: 1px;
+          height: 20px;
+          background-color: rgba($l-subtle-text, 0.2);
+          margin: 0 8px;
+        }
+
         &__item {
           display: block;
           flex: 0 0 auto;

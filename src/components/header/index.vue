@@ -6,12 +6,15 @@
       </div>
       <div class="header__wrapper__action-box">
         <div class="header__wrapper__action-box__item">
-          <icon name="night" />
+          <button class="ghost-btn">
+            <icon name="night" />
+            <p>Dark mode</p>
+          </button>
         </div>
+        <div class="header__wrapper__action-box__divider" />
         <div class="header__wrapper__action-box__item">
-          <button class="share-btn">
+          <button class="ghost-btn ghost-btn--only-icon">
              <icon name="twitter" />
-            <p>Share</p>
           </button>
         </div>
       </div>
