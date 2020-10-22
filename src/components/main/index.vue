@@ -3,7 +3,15 @@
     <Aside></Aside>
     <section>
       <div class="section-header">
-        <span>Your color palette</span>
+        <div class="section-header__title">
+          <span>Your color palette</span>
+        </div>
+        <div class="section-header__action-box">
+           <button class="ghost-btn">
+            <icon name="download" />
+            <p>Export</p>
+          </button>
+        </div>
       </div>
 
       <ColorCard
@@ -21,12 +29,14 @@
 import ColorCard from "../color-card/index";
 import Aside from "../aside/index";
 import { mockedPalettes } from "../../mock/index";
+import Icon from '../shared/icon'
 
 export default {
   name: "Main",
   components: {
     ColorCard,
     Aside,
+    Icon,
   },
   data() {
     return {
