@@ -7,7 +7,9 @@
     <div class="side-menu">
       <div class="side-menu__header">
         <b>Saturated blue</b>
-        <span class="icon"></span>
+        <button class="ghost-btn ghost-btn--only-icon">
+          <Icon name='edit' />
+        </button>
       </div>
       <div class="side-menu__content">
         <div class="side-menu__content__settings">
@@ -372,12 +374,14 @@
 <script>
 import Slider from "../slider/index";
 import Footer from "../footer/index";
+import Icon from '../shared/icon'
 
 export default {
   name: "aside",
   components: {
     Slider,
-    Footer
+    Footer,
+    Icon
   },
   data() {
     return {

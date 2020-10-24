@@ -30,6 +30,7 @@ aside {
 
     &__header {
       display: flex;
+      align-items: center;
       flex: 0 0 auto;
       width: 100%;
       height: auto;
@@ -44,14 +45,6 @@ aside {
         font-size: 16px;
         font-weight: 500;
         line-height: 24px;
-      }
-
-      span.icon {
-        display: block;
-        flex: 0 0 auto;
-        width: 24px;
-        height: 24px;
-        background-color: $l-subtle-text;
       }
     }
 

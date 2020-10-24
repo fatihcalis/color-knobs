@@ -2,7 +2,9 @@
   <article class="color-card" :class="{ active: isActive }">
     <div class="color-card__header">
       <label>{{ title }}</label>
-      <span class="icon"></span>
+      <button class="ghost-btn ghost-btn--only-icon">
+          <Icon name='cross' />
+        </button>
     </div>
     <div class="color-card__palatte">
       <div
@@ -16,6 +18,8 @@
 </template>
 
 <script>
+import Icon from '../shared/icon'
+
 export default {
   name: "ColorCard",
   props: {
@@ -28,6 +32,9 @@ export default {
     colors: {
       type: Array,
     },
+  },
+  components: {
+    Icon
   },
 };
 </script>

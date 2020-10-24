@@ -5,18 +5,24 @@
   height: auto;
   @include card;
   @include E500;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   &:last-child {
     margin-bottom: $pageBleeding;
   }
 
-  &.active {
-    animation: shadowFadeIn 0.3s ease-in-out forwards;
-  }
+  // &.active {
+  //   animation: shadowFadeIn 0.3s ease-in-out forwards;
+  // }
 
   &:hover {
     @include E200;
+
+    .color-card__header {
+      button.ghost-btn {
+        opacity: 1;
+      }
+    }
   }
 
   & + .color-card {
@@ -25,6 +31,7 @@
 
   &__header {
     display: flex;
+    align-items: center;
     width: 100%;
     height: auto;
     margin-bottom: 14px;
@@ -36,12 +43,9 @@
       color: $l-subtle-text;
     }
 
-    span.icon {
-      display: inline-block;
-      flex: 0 0 auto;
-      width: 24px;
-      height: 24px;
-      background-color: $l-subtle-text;
+    button.ghost-btn {
+      transition: all 0.2s ease-in-out;
+      opacity: 0;
     }
   }
 
