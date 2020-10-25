@@ -1,22 +1,55 @@
 @import "../../app/mixin";
 
 .color-card {
+  position: relative;
   width: 100%;
   height: auto;
   @include card;
-  @include E500;
+  background-color: transparent;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  z-index: 2;
+
+  &::before, 
+  &::after,
+  &__shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    content: '';
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    opacity: 0;
+    border-radius: $borderRadius;   
+    border: 1px solid transparent; 
+    box-sizing: border-box;
+    z-index: -1;
+  }
+
+  &::before {
+    @include E500;
+    opacity: 1;
+  }
+
+  &::after {
+    box-shadow: 5px 5px 12px rgba(#3c475b, 0.18), -5px -5px 12px rgba(#fff, 1);
+  }
 
   &:last-child {
     margin-bottom: $pageBleeding;
   }
 
-  // &.active {
-  //   animation: shadowFadeIn 0.3s ease-in-out forwards;
-  // }
-
   &:hover {
-    @include E200;
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 1;
+    }
 
     .color-card__header {
       button.ghost-btn {
@@ -27,6 +60,40 @@
 
   & + .color-card {
     margin-top: calc(#{$pageBleeding} / 2);
+  }
+
+  &--active {
+    .color-card__header {
+      button.ghost-btn {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      &::after {
+        opacity: 0;
+      }
+    }
+
+    &::before,
+    &::after {
+      opacity: 0;
+    }
+
+    .color-card__shadow{
+      border: 1px solid rgba(#cccccf, 0.2);
+      opacity: 1;
+    }
+
+    button.ghost-btn{
+      &:hover {
+        background-color: darken($l-background, 2%);
+      }
+
+      &::before {
+        box-shadow: 3px 3px 6px rgba(#3c475b, 0.2), -3px -3px 6px rgb(#fff, 0.6);
+      }
+    }
   }
 
   &__header {
@@ -41,6 +108,7 @@
       flex: 1 1 auto;
       font-size: 14px;
       color: $l-subtle-text;
+      cursor: pointer;  
     }
 
     button.ghost-btn {
@@ -62,17 +130,9 @@
       height: 100%;
     }
   }
-}
 
-@keyframes shadowFadeIn {
-  0% {
-    @include E200;
-  }
-  50% {
-    box-shadow: none;
-  }
-  100% {
-    @include E-200;
-    background-color: darken($l-background, 1%);
+  &__shadow {
+    box-shadow: inset 8px 8px 16px rgba(#303747, 0.13), inset -8px -8px 16px rgba(#fff, 1);
+    background-color: darken($l-background, 2%);
   }
 }

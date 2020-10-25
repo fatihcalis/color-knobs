@@ -1,5 +1,5 @@
 <template>
-  <article class="color-card" :class="{ active: isActive }">
+  <article class="color-card" :class="{ active: false }">
     <div class="color-card__header">
       <label>{{ title }}</label>
       <button class="ghost-btn ghost-btn--only-icon">
@@ -14,6 +14,7 @@
         :style="{ backgroundColor: color }"
       />
     </div>
+    <div class="color-card__shadow" />
   </article>
 </template>
 
