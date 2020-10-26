@@ -2,8 +2,11 @@
   <vue-slider
     :min="min"
     :max="max"
-    :tooltip-placement="[`bottom`,`bottom`]"
+    :tooltip-placement="[`bottom`, `bottom`]"
+    :contained="true"
+    :enable-cross="false"
     v-model="value"
+    :rail-style="[railStyle]"
   >
     <template v-slot:dot>
       <div class="slider-dot">
@@ -31,7 +34,10 @@
 export default {
   name: "Slider",
   props: {
-    value: {
+    name: {
+      type: String,
+    },
+    initialValue: {
       type: [Number, Array],
     },
     min: {
@@ -39,6 +45,19 @@ export default {
     },
     max: {
       type: Number,
+    },
+    railStyle: {
+      type: Object,
+    },
+  },
+  computed: {
+    value: {
+      get() {
+        return this.initialValue;
+      },
+      set(value) {
+        this.$emit("on-slider-update", value, this.name);
+      },
     },
   },
 };

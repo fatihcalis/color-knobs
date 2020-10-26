@@ -70,21 +70,6 @@ aside {
           color: $l-subtle-text;
           margin-bottom: 10px;
         }
-    
-        .dials {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 100%;
-          height: 10px;
-
-          &__line {
-            flex: 0 0 auto;
-            width: 1px;
-            height: 6px;
-            background-color: rgba($l-text, 0.1);
-          }
-        }
 
         & + .side-menu__content__settings {
           margin-top: 14px;

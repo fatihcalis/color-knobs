@@ -11,361 +11,59 @@
           <Icon name='edit' />
         </button>
       </div>
-      <div class="side-menu__content">
-        <div class="side-menu__content__settings">
-          <label>Color number</label>
-          <div class="dials dials--top">
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-          </div>
-          <Slider :min="0" :max="20" :value="colorNumber"></Slider>
-          <div class="dials dials--bottom">
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-          </div>
+      <div class="side-menu">
+        <div class="side-menu__header">
+          <b>Saturated blue</b>
+          <span class="icon"></span>
         </div>
-        <div class="side-menu__content__settings">
-          <label>Hue</label>
-          <div class="dials dials--top">
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
+        <div class="side-menu__content">
+          <div class="side-menu__content__settings">
+            <label>Color number</label>
+            <Dials position="top" :count="40"></Dials>
+            <Slider
+              :min="0"
+              :max="20"
+              :initial-value="colorNumber"
+              @on-slider-update="update"
+              name="colorNumber"
+            ></Slider>
+            <Dials position="bottom" :count="40"></Dials>
           </div>
-          <Slider :value="hue"></Slider>
-          <div class="dials dials--bottom">
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
+          <div class="side-menu__content__settings">
+            <label>Hue</label>
+            <Dials position="top" :count="40"></Dials>
+            <Slider
+              :min="0"
+              :max="359"
+              :initial-value="hue"
+              @on-slider-update="update"
+              name="hue"
+              :rail-style="hueRailStyle"
+            ></Slider>
+            <Dials position="bottom" :count="40"></Dials>
           </div>
-        </div>
-        <div class="side-menu__content__settings">
-          <label>Saturation</label>
-          <div class="dials dials--top">
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
+          <div class="side-menu__content__settings">
+            <label>Saturation</label>
+            <Dials position="top" :count="40"></Dials>
+            <Slider
+              :initial-value="saturation"
+              @on-slider-update="update"
+              name="saturation"
+            ></Slider>
+            <Dials position="bottom" :count="40"></Dials>
           </div>
-          <Slider :value="saturation"></Slider>
-          <div class="dials dials--bottom">
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-          </div>
-        </div>
-        <div class="side-menu__content__settings">
-          <label>Lightness</label>
-          <div class="dials dials--top">
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-          </div>
-          <Slider :value="lightness"></Slider>
-          <div class="dials dials--bottom">
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
-            <div class="dials__line" />
+          <div class="side-menu__content__settings">
+            <label>Lightness</label>
+            <Dials position="top" :count="40"></Dials>
+            <Slider
+              :initial-value="lightness"
+              @on-slider-update="update"
+              name="lightness"
+            ></Slider>
+            <Dials position="bottom" :count="40"></Dials>
           </div>
         </div>
       </div>
-    </div>
     </div>
     <Footer />
   </aside>
@@ -375,21 +73,50 @@
 import Slider from "../slider/index";
 import Footer from "../footer/index";
 import Icon from '../shared/icon'
+import Dials from "./dials/index";
 
 export default {
   name: "aside",
   components: {
     Slider,
     Footer,
-    Icon
+    Icon,
+    Dials,
   },
-  data() {
-    return {
-      colorNumber: 5,
-      hue: 180,
-      saturation: 50,
-      lightness: [20, 80],
-    };
+  props: {
+    hue: {
+      type: Number,
+    },
+    saturation: {
+      type: Number,
+    },
+    lightness: {
+      type: Number,
+    },
+    colorNumber: {
+      type: Number,
+    },
+  },
+  methods: {
+    update(value, name) {
+      this.$emit("on-aside-update", value, name);
+    },
+  },
+  computed: {
+    hueRailStyle() {
+      return {
+        background: `linear-gradient(
+            to right,
+            #ff0000 0%,
+            #ffff00 17%,
+            #00ff00 33%,
+            #00ffff 50%,
+            #0000ff 67%,
+            #ff00ff 83%,
+            #ff0000 100%
+          )`,
+      };
+    },
   },
 };
 </script>
