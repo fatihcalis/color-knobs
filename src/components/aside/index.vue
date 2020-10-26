@@ -2,19 +2,14 @@
   <aside>
     <div class="control-menu">
       <div class="section-header">
-      <span>Palette settings</span>
-    </div>
-    <div class="side-menu">
-      <div class="side-menu__header">
-        <b>Saturated blue</b>
-        <button class="ghost-btn ghost-btn--only-icon">
-          <Icon name='edit' />
-        </button>
+        <span>Palette settings</span>
       </div>
       <div class="side-menu">
         <div class="side-menu__header">
           <b>Saturated blue</b>
-          <span class="icon"></span>
+          <button class="ghost-btn ghost-btn--only-icon">
+            <Icon name="edit" />
+          </button>
         </div>
         <div class="side-menu__content">
           <div class="side-menu__content__settings">
@@ -72,7 +67,7 @@
 <script>
 import Slider from "../slider/index";
 import Footer from "../footer/index";
-import Icon from '../shared/icon'
+import Icon from "../shared/icon";
 import Dials from "./dials/index";
 
 export default {
