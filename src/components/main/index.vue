@@ -34,6 +34,7 @@
       />
       <button class="color-add-btn" @click="addNewPalette">
         <Icon name="plus" />
+        <div class="color-add-btn__shadow" />
       </button>
     </section>
   </main>
