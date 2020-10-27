@@ -54,7 +54,7 @@ export default {
             colorNumber: 10,
             hue: 180,
             saturation: 50,
-            lightness: 20,
+            lightness: [20, 80],
           },
           colors: [],
         },
@@ -118,15 +118,14 @@ export default {
       return { r, g, b };
     },
     getColors(count, hue, saturation, lightness) {
+      const [start, end] = lightness;
+      const incrementer = (end - start) / count;
       let rgbArr = [];
-      for (let i = 1; i <= count; i++) {
-        const acc = (100 - count) / count;
-        rgbArr = [...rgbArr, i * acc - 1];
+      for (let i = start; i < end; i = i + incrementer) {
+        rgbArr = [...rgbArr, i];
       }
-
       return rgbArr.map((x) => {
-        const { r, g, b } = this.hslToRgb(hue, saturation, lightness + x);
-
+        const { r, g, b } = this.hslToRgb(hue, saturation, x);
         return this.rgbToHex(r, g, b);
       });
     },

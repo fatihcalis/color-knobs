@@ -2,6 +2,8 @@
   <vue-slider
     :min="min"
     :max="max"
+    :min-range="minRange"
+    :max-range="maxRange"
     :tooltip-placement="[`bottom`, `bottom`]"
     :contained="true"
     :enable-cross="false"
@@ -48,6 +50,14 @@ export default {
     },
     railStyle: {
       type: Object,
+    },
+    minRange: {
+      type: Number,
+      Default: 0,
+    },
+    maxRange: {
+      type: Number,
+      Default: 100,
     },
   },
   computed: {

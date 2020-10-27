@@ -16,7 +16,7 @@
             <label>Color number</label>
             <Dials position="top" :count="40"></Dials>
             <Slider
-              :min="0"
+              :min="3"
               :max="20"
               :initial-value="colorNumber"
               @on-slider-update="update"
@@ -52,6 +52,7 @@
             <Dials position="top" :count="40"></Dials>
             <Slider
               :initial-value="lightness"
+              :min-range="10"
               @on-slider-update="update"
               name="lightness"
             ></Slider>
@@ -86,7 +87,7 @@ export default {
       type: Number,
     },
     lightness: {
-      type: Number,
+      type: Array,
     },
     colorNumber: {
       type: Number,
