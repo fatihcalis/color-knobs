@@ -6,9 +6,21 @@
       </div>
       <div class="side-menu">
         <div class="side-menu__header">
-          <b>Saturated blue</b>
-          <button class="ghost-btn ghost-btn--only-icon">
+          <b v-if="!editMode">{{ title }}</b>
+          <button
+            v-if="!editMode"
+            class="ghost-btn ghost-btn--only-icon"
+            @click="editMode = true"
+          >
             <Icon name="edit" />
+          </button>
+          <input v-model="title" v-if="editMode" />
+          <button
+            v-if="editMode"
+            class="ghost-btn ghost-btn--only-icon"
+            @click="updateTitle"
+          >
+            <Icon name="plus" />
           </button>
         </div>
         <div class="side-menu__content">
@@ -16,7 +28,7 @@
             <label>Color number</label>
             <Dials position="top" :count="40"></Dials>
             <Slider
-              :min="3"
+              :min="5"
               :max="20"
               :initial-value="colorNumber"
               @on-slider-update="update"
@@ -34,6 +46,7 @@
               @on-slider-update="update"
               name="hue"
               :rail-style="hueRailStyle"
+              custom-class="vue-slider--hue"
             ></Slider>
             <Dials position="bottom" :count="40"></Dials>
           </div>
@@ -52,9 +65,10 @@
             <Dials position="top" :count="40"></Dials>
             <Slider
               :initial-value="lightness"
-              :min-range="10"
+              :min-range="20"
               @on-slider-update="update"
               name="lightness"
+              custom-class="vue-slider--lightness"
             ></Slider>
             <Dials position="bottom" :count="40"></Dials>
           </div>
@@ -80,6 +94,9 @@ export default {
     Dials,
   },
   props: {
+    initialTitle: {
+      type: String,
+    },
     hue: {
       type: Number,
     },
@@ -93,9 +110,20 @@ export default {
       type: Number,
     },
   },
+  data() {
+    return {
+      editMode: false,
+      upToDateTitle: this.initialTitle,
+    };
+  },
+
   methods: {
     update(value, name) {
       this.$emit("on-aside-update", value, name);
+    },
+    updateTitle() {
+      this.$emit("on-title-update", this.upToDateTitle);
+      this.editMode = false;
     },
   },
   computed: {
@@ -112,6 +140,14 @@ export default {
             #ff0000 100%
           )`,
       };
+    },
+    title: {
+      get() {
+        return this.initialTitle;
+      },
+      set(value) {
+        this.upToDateTitle = value;
+      },
     },
   },
 };

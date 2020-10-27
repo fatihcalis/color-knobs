@@ -1,11 +1,13 @@
 <template>
   <main>
     <Aside
+      :initial-title="activePalette.title"
       :hue="activePalette.values.hue"
       :saturation="activePalette.values.saturation"
       :lightness="activePalette.values.lightness"
       :color-number="activePalette.values.colorNumber"
       @on-aside-update="update"
+      @on-title-update="updateTitle"
     ></Aside>
     <section>
       <div class="section-header">
@@ -22,17 +24,24 @@
 
       <ColorCard
         v-for="(palette, index) in mappedPalettes"
-        :key="index"
+        :key="palette.id"
         :colors="palette.colors"
         :is-active="palette.isActive"
         :title="palette.title"
+        @on-select="setActiveCard(palette)"
+        @on-delete="deleteCard(palette, index)"
+        :hide-delete-action="mappedPalettes.length === 1"
       />
+      <button class="color-add-btn" @click="addNewPalette">
+        <Icon name="plus" />
+      </button>
     </section>
   </main>
 </template>
 
 <script>
 import Vue from "vue";
+import { v4 as uuidv4 } from "uuid";
 import ColorCard from "../color-card/index";
 import Aside from "../aside/index";
 import Icon from "../shared/icon";
@@ -48,6 +57,7 @@ export default {
     return {
       palettes: [
         {
+          id: uuidv4(),
           isActive: true,
           title: "Palette 1",
           values: {
@@ -62,6 +72,45 @@ export default {
     };
   },
   methods: {
+    addNewPalette() {
+      const paletteTemp = {
+        id: uuidv4(),
+        isActive: true,
+        title: `Palette ${this.palettes.length + 1}`,
+        values: {
+          colorNumber: 10,
+          hue: 180,
+          saturation: 50,
+          lightness: [20, 80],
+        },
+        colors: [],
+      };
+      this.palettes.forEach((palette) => {
+        Vue.set(palette, "isActive", false);
+      });
+
+      this.palettes = [...this.palettes, paletteTemp];
+    },
+    setActiveCard(palette) {
+      this.palettes.forEach((p) => {
+        if (p.id === palette.id) {
+          Vue.set(p, "isActive", true);
+        } else {
+          Vue.set(p, "isActive", false);
+        }
+      });
+    },
+    deleteCard(palette, index) {
+      if (palette.isActive) {
+        const newActiveIndex = index === 0 ? index + 1 : index - 1;
+        this.setActiveCard(this.mappedPalettes[newActiveIndex]);
+      }
+      const filteredPalettes = this.palettes.filter((p) => p.id !== palette.id);
+      Vue.set(this, "palettes", filteredPalettes);
+    },
+    updateTitle(value) {
+      Vue.set(this.activePalette, "title", value);
+    },
     update(value, name) {
       Vue.set(this.activePalette.values, name, value);
     },
@@ -119,9 +168,9 @@ export default {
     },
     getColors(count, hue, saturation, lightness) {
       const [start, end] = lightness;
-      const incrementer = (end - start) / count;
+      const incrementer = (end - start) / (count - 1);
       let rgbArr = [];
-      for (let i = start; i < end; i = i + incrementer) {
+      for (let i = start; i <= end; i = i + incrementer) {
         rgbArr = [...rgbArr, i];
       }
       return rgbArr.map((x) => {

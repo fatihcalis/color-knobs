@@ -1,10 +1,18 @@
 <template>
-  <article class="color-card" :class="{ active: false }">
+  <article
+    class="color-card"
+    :class="{ 'color-card--active': isActive }"
+    @click="selectPalette"
+  >
     <div class="color-card__header">
       <label>{{ title }}</label>
-      <button class="ghost-btn ghost-btn--only-icon">
-          <Icon name='cross' />
-        </button>
+      <button
+        v-if="!hideDeleteAction"
+        class="ghost-btn ghost-btn--only-icon"
+        @click.stop="deletePalette"
+      >
+        <Icon name="cross" />
+      </button>
     </div>
     <div class="color-card__palatte">
       <div
@@ -19,7 +27,7 @@
 </template>
 
 <script>
-import Icon from '../shared/icon'
+import Icon from "../shared/icon";
 
 export default {
   name: "ColorCard",
@@ -33,9 +41,20 @@ export default {
     colors: {
       type: Array,
     },
+    hideDeleteAction: {
+      type: Boolean,
+    },
   },
   components: {
-    Icon
+    Icon,
+  },
+  methods: {
+    deletePalette() {
+      this.$emit("on-delete");
+    },
+    selectPalette() {
+      this.$emit("on-select");
+    },
   },
 };
 </script>

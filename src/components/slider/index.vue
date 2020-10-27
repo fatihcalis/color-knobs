@@ -9,6 +9,7 @@
     :enable-cross="false"
     v-model="value"
     :rail-style="[railStyle]"
+    :class="customClass"
   >
     <template v-slot:dot>
       <div class="slider-dot">
@@ -58,6 +59,9 @@ export default {
     maxRange: {
       type: Number,
       Default: 100,
+    },
+    customClass: {
+      type: String,
     },
   },
   computed: {
