@@ -20,7 +20,14 @@
             class="ghost-btn ghost-btn--only-icon"
             @click="updateTitle"
           >
-            <Icon name="plus" />
+            <Icon name="cross" />
+          </button>
+          <button
+            v-if="editMode"
+            class="ghost-btn ghost-btn--only-icon"
+            @click="updateTitle"
+          >
+            <Icon name="check" />
           </button>
         </div>
         <div class="side-menu__content">

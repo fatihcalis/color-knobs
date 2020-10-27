@@ -46,6 +46,28 @@ aside {
         font-weight: 500;
         line-height: 24px;
       }
+
+      input {
+        position: relative;
+        display: block;
+        flex: 1 1 auto;
+        height: 28px;
+        padding: 0 8px;
+        margin-left: -8px;
+        margin-right: 10px;
+        background: none;
+        @include E-50;
+        border: none;
+        color: $l-text;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+
+        &:focus {
+          outline: none;
+        }
+      }
     }
 
     &__content {
