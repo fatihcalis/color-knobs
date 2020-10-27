@@ -15,7 +15,7 @@
           <span>Your color palette</span>
         </div>
         <div class="section-header__action-box">
-          <button class="ghost-btn">
+          <button class="ghost-btn" @click="openExportModal">
             <icon name="download" />
             <p>Export</p>
           </button>
@@ -45,6 +45,7 @@ import { v4 as uuidv4 } from "uuid";
 import ColorCard from "../color-card/index";
 import Aside from "../aside/index";
 import Icon from "../shared/icon";
+import ExportModal from "./export-modal/index";
 
 export default {
   name: "Main",
@@ -72,6 +73,15 @@ export default {
     };
   },
   methods: {
+    openExportModal() {
+      // this.$modal.show(
+      //   component,
+      //   component_properties,
+      //   modal_properties,
+      //   modal_events
+      // );
+      this.$modal.show(ExportModal);
+    },
     addNewPalette() {
       const paletteTemp = {
         id: uuidv4(),
