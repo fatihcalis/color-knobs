@@ -48,6 +48,13 @@ import Aside from "../aside/index";
 import Icon from "../shared/icon";
 import ExportModal from "./export-modal/index";
 
+const initialValues = {
+  colorNumber: 12,
+  hue: 212,
+  saturation: 60,
+  lightness: [20, 80],
+};
+
 export default {
   name: "Main",
   components: {
@@ -63,10 +70,7 @@ export default {
           isActive: true,
           title: "Palette 1",
           values: {
-            colorNumber: 10,
-            hue: 180,
-            saturation: 50,
-            lightness: [20, 80],
+            ...initialValues,
           },
           colors: [],
         },
@@ -75,13 +79,7 @@ export default {
   },
   methods: {
     openExportModal() {
-      // this.$modal.show(
-      //   component,
-      //   component_properties,
-      //   modal_properties,
-      //   modal_events
-      // );
-      this.$modal.show(ExportModal);
+      this.$modal.show(ExportModal, { palettes: this.mappedPalettes });
     },
     addNewPalette() {
       const paletteTemp = {
@@ -89,10 +87,8 @@ export default {
         isActive: true,
         title: `Palette ${this.palettes.length + 1}`,
         values: {
-          colorNumber: 10,
-          hue: 180,
-          saturation: 50,
-          lightness: [20, 80],
+          ...initialValues,
+          hue: this.getRandomIntInclusive(0, 360),
         },
         colors: [],
       };
@@ -188,6 +184,11 @@ export default {
         const { r, g, b } = this.hslToRgb(hue, saturation, x);
         return this.rgbToHex(r, g, b);
       });
+    },
+    getRandomIntInclusive(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1) + min);
     },
   },
 

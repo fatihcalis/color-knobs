@@ -1,0 +1,22 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 8px 16px;
+
+    &__item {
+      padding: 4px 2px;
+      border: 1px solid black;
+      border-radius: 3px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+  &__content {
+    padding: 8px 16px;
+  }
+}

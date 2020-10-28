@@ -6,7 +6,7 @@
       </div>
       <div class="side-menu">
         <div class="side-menu__header">
-          <b v-if="!editMode">{{ title }}</b>
+          <b v-if="!editMode" @click="editMode = true">{{ title }}</b>
           <button
             v-if="!editMode"
             class="ghost-btn ghost-btn--only-icon"

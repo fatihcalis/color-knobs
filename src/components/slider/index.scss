@@ -12,18 +12,20 @@ body {
     border-radius: 6px;
     cursor: ew-resize;
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 3px 3px 6px rgba(60, 71, 91, 0.15), -3px -3px 6px rgba(255, 255, 255, 0.6);
+    box-shadow: 3px 3px 6px rgba(60, 71, 91, 0.15),
+      -3px -3px 6px rgba(255, 255, 255, 0.6);
 
     &__shadow {
       position: absolute;
       top: 0;
       width: 6px;
       height: 100%;
-      
+
       &--left {
         left: 0;
         border-radius: 6px 0 0 6px;
-        box-shadow: inset 3px 0 6px  rgba(60, 71, 91, 0.02), inset -3px 0 4px rgba(white, 0.6);
+        box-shadow: inset 3px 0 6px rgba(60, 71, 91, 0.02),
+          inset -3px 0 4px rgba(white, 0.6);
       }
 
       &--right {
@@ -52,7 +54,7 @@ body {
 
   .slider-process {
     display: none;
-    background-color: #CCD3DD;
+    background-color: #ccd3dd;
     border-radius: 4px;
   }
 
@@ -63,7 +65,8 @@ body {
     &-rail {
       background-color: $slider;
       cursor: pointer;
-      box-shadow: inset 2px 2px 4px rgba(#3c475b, 0.1), inset -2px -2px 4px rgba(#fff, 1);
+      box-shadow: inset 2px 2px 4px rgba(#3c475b, 0.1),
+        inset -2px -2px 4px rgba(#fff, 1);
     }
 
     &-dot {
@@ -85,6 +88,7 @@ body {
     &--lightness {
       .slider-process {
         display: block;
+        position: relative;
       }
     }
 
@@ -100,8 +104,17 @@ body {
           border-radius: 0.5px;
           display: block;
           height: 1px;
-          content: '';
-          background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%);
+          content: "";
+          background: linear-gradient(
+            to right,
+            rgb(255, 0, 0) 0%,
+            rgb(255, 255, 0) 17%,
+            rgb(0, 255, 0) 33%,
+            rgb(0, 255, 255) 50%,
+            rgb(0, 0, 255) 67%,
+            rgb(255, 0, 255) 83%,
+            rgb(255, 0, 0) 100%
+          );
           z-index: 1;
           filter: blur(5px);
         }
@@ -114,8 +127,17 @@ body {
           border-radius: 0.5px;
           display: block;
           height: 1px;
-          content: '';
-          background: linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%);
+          content: "";
+          background: linear-gradient(
+            to right,
+            rgb(255, 0, 0) 0%,
+            rgb(255, 255, 0) 17%,
+            rgb(0, 255, 0) 33%,
+            rgb(0, 255, 255) 50%,
+            rgb(0, 0, 255) 67%,
+            rgb(255, 0, 255) 83%,
+            rgb(255, 0, 0) 100%
+          );
           z-index: 2;
         }
       }
