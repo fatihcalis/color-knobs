@@ -15,6 +15,10 @@ aside {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
+
+    .section-header {
+      animation-delay: 0.2s;
+    }
   }
 
   .side-menu {
@@ -27,6 +31,10 @@ aside {
     @include card;
     @include E500;
     padding: 0;
+    animation: settings-in 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    transform: translate(0, -100px);
+    opacity: 0;
+    // animation-delay: 0.5s;
 
     &__header {
       display: flex;
@@ -99,5 +107,16 @@ aside {
         }
       }
     }
+  }
+}
+
+@keyframes settings-in {
+  0% {
+    opacity: 0;
+    transform: translate(0, -100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }

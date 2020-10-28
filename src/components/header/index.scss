@@ -11,6 +11,10 @@ header {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   grid-area: header;
+  animation: header-in 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  animation-delay: 0.3s;
+  transform: translate(0, -60px);
+  opacity: 0;
 
   .header {
     &__wrapper {
@@ -57,6 +61,17 @@ header {
           }
         }
       }
+    }
+  }
+
+  @keyframes header-in {
+    0% {
+      opacity: 0;
+      transform: translate(0, -60px);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
     }
   }
 }

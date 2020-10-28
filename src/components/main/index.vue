@@ -21,8 +21,8 @@
           </button>
         </div>
       </div>
-
-      <ColorCard
+      <div class="section-content">
+        <ColorCard
         v-for="(palette, index) in mappedPalettes"
         :key="palette.id"
         :colors="palette.colors"
@@ -31,11 +31,12 @@
         @on-select="setActiveCard(palette)"
         @on-delete="deleteCard(palette, index)"
         :hide-delete-action="mappedPalettes.length === 1"
-      />
-      <button class="color-add-btn" @click="addNewPalette">
-        <Icon name="plus" />
-        <div class="color-add-btn__shadow" />
-      </button>
+        />
+        <button class="color-add-btn" @click="addNewPalette">
+          <Icon name="plus" />
+          <div class="color-add-btn__shadow" />
+        </button>
+      </div>
     </section>
   </main>
 </template>

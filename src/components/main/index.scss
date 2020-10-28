@@ -25,6 +25,10 @@ main {
   width: 100%;
   height: auto;
   margin-bottom: 20px;
+  animation: main-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  transform: translate(0, -60px);
+  opacity: 0;
+  animation-delay: 0.15s;
 
   &__title {
     flex: 1 1 auto;
@@ -39,6 +43,11 @@ main {
     line-height: 32px;
     font-weight: 500;
   }
+}
+
+.section-content {
+  animation: main-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  transform: translate(0, -60px);
 }
 
 .color-add-btn {
@@ -116,5 +125,16 @@ main {
       border: 1px solid rgba(#cccccf, 0.2);
       opacity: 1;
     }
+  }
+}
+
+@keyframes main-in {
+  0% {
+    opacity: 0;
+    transform: translate(0, -60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
