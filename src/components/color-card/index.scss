@@ -102,7 +102,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: auto;
+    height: 28px;
     margin-bottom: 14px;
 
     label {
@@ -134,7 +134,7 @@
   }
 
   &__shadow {
-    border: 1px solid rgba(#4c8ae2, 0.5); 
+    border: 1px solid rgba(#4c8ae2, 0.5);
     box-shadow: inset 8px 8px 16px rgba(#303747, 0.13), inset -8px -8px 16px rgba(#fff, 1);
     background-color: darken($l-background, 2%);
 
