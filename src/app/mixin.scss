@@ -50,6 +50,13 @@ $cardpadding: 20px;
   box-shadow: inset 3px 3px 6px rgba(#3c475b, 0.1), inset -3px -3px 6px rgba(#fff, 1);
 }
 
+@mixin no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 // Button
 button {
   &.ghost-btn {
@@ -125,3 +132,26 @@ button {
     }
   }
 }
+
+// Modals
+#modals-container {
+	.vm--container {
+		.vm--overlay {
+			background-color: rgba($l-background, 0.6);			
+			-webkit-backdrop-filter: blur(8px);
+			backdrop-filter: blur(8px);	
+		}
+
+		.vm--modal {
+			top: 60px !important;
+			bottom: 60px !important;
+			left: calc(50% - 330px) !important;
+			width: 660px !important;
+			height: calc(100% - 120px) !important;
+			border-radius: 18px;
+			box-shadow: 20px 20px 40px rgba(#3c475b, 0.2), -20px -20px 40px #fff;
+			background-color: $l-background;			
+		}
+	}
+}
+

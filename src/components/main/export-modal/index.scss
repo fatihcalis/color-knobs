@@ -1,0 +1,50 @@
+@import "../../../app/mixin";
+
+.export-modal {
+	width: 100%;
+	height: 100%;
+
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		height: 80px;
+		padding: 0 34px;
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: calc(100% - 80px);
+		padding: 0 34px 34px 34px;
+
+		&__code {
+			position: relative;
+			display: flex;
+			flex: 1 1 auto;
+			width: 100%;
+			height: 100%;
+			border-radius: 18px;
+			@include E-200;
+			padding: 20px;
+
+			.ghost-btn {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+			}
+
+			&__text {
+				width: 100%;
+				height: auto;
+				padding: 2px;
+				color: rgba($l-subtle-text, 0.8);
+				font-size: 12px;
+				font-weight: 400;
+				font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+			}
+		}
+	}
+}

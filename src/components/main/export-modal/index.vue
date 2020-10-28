@@ -1,6 +1,11 @@
 <template>
   <div class="export-modal">
-    <div class="export-modal__header"></div>
+    <div class="export-modal__header">
+      <p>Export</p>
+      <button class="ghost-btn ghost-btn--only-icon">
+        <icon name="cross" />
+      </button>
+    </div>
     <div class="export-modal__body">
       <Tabs :headers="tabHeaders" @on-item-click="setActiveTab">
         <Tab tab-name="JSON" :active-tab-name="activeTabName">
@@ -14,19 +19,20 @@
         </Tab>
       </Tabs>
     </div>
-    <div class="export-modal__footer"></div>
   </div>
 </template>
 
 <script>
 import Tabs from "../../tabs/index";
 import Tab from "../../tabs/tab/index";
+import Icon from "../../shared/icon";
 
 export default {
   name: "ExportModal",
   components: {
     Tabs,
     Tab,
+    Icon,
   },
   props: {
     palettes: { type: Array },
