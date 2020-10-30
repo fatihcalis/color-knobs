@@ -10,6 +10,7 @@
   cursor: pointer;
   z-index: 2;
   animation: color-card-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  margin-bottom: calc(#{$pageBleeding} / 2);
 
   &::before, 
   &::after,
@@ -60,10 +61,6 @@
         opacity: 1;
       }
     }
-  }
-
-  & + .color-card {
-    margin-top: calc(#{$pageBleeding} / 2);
   }
 
   &--active {
@@ -167,7 +164,7 @@
   }
 
   &--out {
-    animation: color-card-out 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    animation: color-card-out 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards !important;
 
     .color-card__header {
       animation: color-card-header-out 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
@@ -186,10 +183,16 @@
   0% {
     opacity: 0;
     height: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   100% {
     opacity: 1;
     height: 232px;
+    margin-bottom: calc(#{$pageBleeding} / 2);
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 
@@ -221,10 +224,16 @@
   0% {
     opacity: 1;
     height: 232px;
+    margin-bottom: calc(#{$pageBleeding} / 2);
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   100% {
     opacity: 0;
     height: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 

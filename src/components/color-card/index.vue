@@ -3,7 +3,7 @@
     class="color-card"
     :class="{
       'color-card--active': isActive,
-      'card-color--out': activateDeleteAnimation,
+      'color-card--out': activateDeleteAnimation,
     }"
     @click="selectPalette"
   >

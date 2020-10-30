@@ -127,7 +127,7 @@ export default {
         );
         Vue.set(this, "palettes", filteredPalettes);
         this.activateDeleteAnimation.splice(index, 1);
-      }, 852);
+      }, 800);
     },
     updateTitle(value) {
       Vue.set(this.activePalette, "title", value);
