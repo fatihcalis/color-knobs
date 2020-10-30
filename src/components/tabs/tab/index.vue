@@ -1,7 +1,12 @@
-<template>  
+<template>
   <div class="tab__content__body" v-show="tabName === activeTabName">
-    <button class="ghost-btn ghost-btn--only-icon">
-      <icon name="copy" />  
+    <button
+      @mouseleave="$emit('on-copy-mouse-leave')"
+      v-tooltip="{ content: tooltipMessage, hideOnTargetClick: false }"
+      class="ghost-btn ghost-btn--only-icon"
+      @click="$emit('on-copy')"
+    >
+      <icon name="copy" />
     </button>
     <div class="tab__content__body__scroll">
       <slot></slot>
@@ -22,6 +27,9 @@ export default {
       type: String,
     },
     activeTabName: {
+      type: String,
+    },
+    tooltipMessage: {
       type: String,
     },
   },

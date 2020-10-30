@@ -23,14 +23,15 @@
       </div>
       <div class="section-content">
         <ColorCard
-        v-for="(palette, index) in mappedPalettes"
-        :key="palette.id"
-        :colors="palette.colors"
-        :is-active="palette.isActive"
-        :title="palette.title"
-        @on-select="setActiveCard(palette)"
-        @on-delete="deleteCard(palette, index)"
-        :hide-delete-action="mappedPalettes.length === 1"
+          v-for="(palette, index) in mappedPalettes"
+          :key="palette.id"
+          :colors="palette.colors"
+          :is-active="palette.isActive"
+          :title="palette.title"
+          @on-select="setActiveCard(palette)"
+          @on-delete="deleteCard(palette, index)"
+          :hide-delete-action="mappedPalettes.length === 1"
+          :activate-delete-animation="activateDeleteAnimation[index]"
         />
         <button class="color-add-btn" @click="addNewPalette">
           <Icon name="plus" />
@@ -76,11 +77,14 @@ export default {
           colors: [],
         },
       ],
+      activateDeleteAnimation: [false],
     };
   },
   methods: {
     openExportModal() {
-      this.$modal.show(ExportModal, { palettes: this.mappedPalettes });
+      this.$modal.show(ExportModal, {
+        palettes: this.mappedPalettes,
+      });
     },
     addNewPalette() {
       const paletteTemp = {
@@ -98,6 +102,7 @@ export default {
       });
 
       this.palettes = [...this.palettes, paletteTemp];
+      this.activateDeleteAnimation.push(false);
     },
     setActiveCard(palette) {
       this.palettes.forEach((p) => {
@@ -109,12 +114,20 @@ export default {
       });
     },
     deleteCard(palette, index) {
-      if (palette.isActive) {
-        const newActiveIndex = index === 0 ? index + 1 : index - 1;
-        this.setActiveCard(this.mappedPalettes[newActiveIndex]);
-      }
-      const filteredPalettes = this.palettes.filter((p) => p.id !== palette.id);
-      Vue.set(this, "palettes", filteredPalettes);
+      Vue.set(this.activateDeleteAnimation, index, true);
+
+      setTimeout(() => {
+        Vue.set(this.activateDeleteAnimation, index, false);
+        if (palette.isActive) {
+          const newActiveIndex = index === 0 ? index + 1 : index - 1;
+          this.setActiveCard(this.mappedPalettes[newActiveIndex]);
+        }
+        const filteredPalettes = this.palettes.filter(
+          (p) => p.id !== palette.id
+        );
+        Vue.set(this, "palettes", filteredPalettes);
+        this.activateDeleteAnimation.splice(index, 1);
+      }, 852);
     },
     updateTitle(value) {
       Vue.set(this.activePalette, "title", value);

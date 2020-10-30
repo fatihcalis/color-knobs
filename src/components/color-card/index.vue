@@ -1,7 +1,10 @@
 <template>
   <article
     class="color-card"
-    :class="{ 'color-card--active': isActive }"
+    :class="{
+      'color-card--active': isActive,
+      'card-color--out': activateDeleteAnimation,
+    }"
     @click="selectPalette"
   >
     <div class="color-card__header">
@@ -42,6 +45,9 @@ export default {
       type: Array,
     },
     hideDeleteAction: {
+      type: Boolean,
+    },
+    activateDeleteAnimation: {
       type: Boolean,
     },
   },

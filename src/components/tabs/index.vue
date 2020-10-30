@@ -2,12 +2,13 @@
   <div class="tabs">
     <div class="tabs__header">
       <div
-        v-for="(name, index) in headers"
+        v-for="(header, index) in headers"
         :key="index"
         class="tabs__header__item"
-        @click="onItemClick(name)"
+        :class="{ 'tabs__header__item--active': header.isActive }"
+        @click="onItemClick(header)"
       >
-        {{ name }}
+        {{ header.name }}
       </div>
     </div>
     <div class="tabs__content">
@@ -28,8 +29,8 @@ export default {
     this.$emit("on-item-click", this.headers[0]);
   },
   methods: {
-    onItemClick(name) {
-      this.$emit("on-item-click", name);
+    onItemClick(header) {
+      this.$emit("on-item-click", header);
     },
   },
 };
