@@ -30,10 +30,32 @@
           tab-name="SCSS"
           :active-tab-name="activeTab.name"
           :tooltip-message="tooltipMessage"
-          @on-copy="copyToClipboard('SCSS')"
+          @on-copy="
+            copyToClipboard(convertSCCSFormatToString(scssFormatedPalettes))
+          "
           @on-copy-mouse-leave="tooltipMessage = 'Copy'"
         >
-          <div>SCSS</div>
+          <div class="scss">
+            <div
+              class="scss__palette"
+              v-for="({ key, values }, index) in scssFormatedPalettes"
+              :key="index"
+            >
+              <div class="scss__palette__title">
+                {{ key }}
+              </div>
+              <div class="scss__palette__colors">
+                <div
+                  class="scss__palette__colors__item"
+                  v-for="(value, index) in values"
+                  :key="index"
+                >
+                  {{ value }}
+                </div>
+              </div>
+              <br />
+            </div>
+          </div>
         </Tab>
       </Tabs>
     </div>
@@ -44,6 +66,7 @@
 import Tabs from "../../tabs/index";
 import Tab from "../../tabs/tab/index";
 import Icon from "../../shared/icon";
+import kebapCase from "lodash.kebabcase";
 
 export default {
   name: "ExportModal",
@@ -82,6 +105,20 @@ export default {
         this.tooltipMessage = "Copied";
       });
     },
+    convertSCCSFormatToString(palettes) {
+      let converted = "";
+      palettes.forEach((palette) => {
+        converted += palette.key + "\n";
+        palette.values.forEach((value, index) => {
+          if (index === palette.values.length - 1) {
+            converted += value + "\n \n";
+          } else {
+            converted += value + "\n";
+          }
+        });
+      });
+      return converted;
+    },
   },
   computed: {
     jsonFormatedPalettes() {
@@ -91,13 +128,22 @@ export default {
           {
             palette: palette.title,
             colors: palette.colors.map((color, index) => ({
-              name: index,
+              name: `${kebapCase(palette.title)}-${index * 10}`,
               color,
             })),
           },
         ],
         []
       );
+    },
+    scssFormatedPalettes() {
+      return this.palettes.map((palette) => ({
+        key: `// ${palette.title}`,
+        values: palette.colors.map(
+          (color, index) =>
+            `$${kebapCase(palette.title)}-${index * 10}: ${color};`
+        ),
+      }));
     },
   },
 };
