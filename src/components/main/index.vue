@@ -190,10 +190,16 @@ export default {
     getColors(count, hue, saturation, lightness) {
       const [start, end] = lightness;
       const incrementer = (end - start) / (count - 1);
+
       let rgbArr = [];
       for (let i = start; i <= end; i = i + incrementer) {
         rgbArr = [...rgbArr, i];
       }
+
+      if (end !== Math.ceil(rgbArr[rgbArr.length - 1])) {
+        rgbArr = [...rgbArr, end];
+      }
+
       return rgbArr.map((x) => {
         const { r, g, b } = this.hslToRgb(hue, saturation, x);
         return this.rgbToHex(r, g, b);
