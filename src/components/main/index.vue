@@ -49,6 +49,7 @@ import ColorCard from "../color-card/index";
 import Aside from "../aside/index";
 import Icon from "../shared/icon";
 import ExportModal from "./export-modal/index";
+import chroma from "chroma-js";
 
 const initialValues = {
   colorNumber: 12,
@@ -135,58 +136,58 @@ export default {
     update(value, name) {
       Vue.set(this.activePalette.values, name, value);
     },
-    toHex(n) {
-      let hex = n.toString(16);
-      while (hex.length < 2) {
-        hex = `0${hex}`;
-      }
-      return hex;
-    },
-    rgbToHex(r, g, b) {
-      return `#${this.toHex(r)}${this.toHex(g)}${this.toHex(b)}`;
-    },
-    hslToRgb(h, s, l) {
-      s /= 100;
-      l /= 100;
+    // toHex(n) {
+    //   return (256 + n).toString(16).substr(-2);
+    // },
+    // rgbToHex(r, g, b) {
+    //   return `#${this.toHex(r)}${this.toHex(g)}${this.toHex(b)}`;
+    // },
 
-      let c = (1 - Math.abs(2 * l - 1)) * s,
-        x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
-        m = l - c / 2,
-        r = 0,
-        g = 0,
-        b = 0;
-
-      if (0 <= h && h < 60) {
-        r = c;
-        g = x;
-        b = 0;
-      } else if (60 <= h && h < 120) {
-        r = x;
-        g = c;
-        b = 0;
-      } else if (120 <= h && h < 180) {
-        r = 0;
-        g = c;
-        b = x;
-      } else if (180 <= h && h < 240) {
-        r = 0;
-        g = x;
-        b = c;
-      } else if (240 <= h && h < 300) {
-        r = x;
-        g = 0;
-        b = c;
-      } else if (300 <= h && h < 360) {
-        r = c;
-        g = 0;
-        b = x;
-      }
-      r = Math.round((r + m) * 255);
-      g = Math.round((g + m) * 255);
-      b = Math.round((b + m) * 255);
-
-      return { r, g, b };
-    },
+    // hslToRgb(hue, saturation, lightness) {
+    //   // Depends on https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB
+    //   if (hue == undefined) {
+    //     return { r: 0, g: 0, b: 0 };
+    //   }
+    //   const chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
+    //   let huePrime = hue / 60;
+    //   const secondComponent = chroma * (1 - Math.abs((huePrime % 2) - 1));
+    //   huePrime = Math.floor(huePrime);
+    //   let red, green, blue;
+    //   if (huePrime === 0) {
+    //     red = chroma;
+    //     green = secondComponent;
+    //     blue = 0;
+    //   } else if (huePrime === 1) {
+    //     red = secondComponent;
+    //     green = chroma;
+    //     blue = 0;
+    //   } else if (huePrime === 2) {
+    //     red = 0;
+    //     green = chroma;
+    //     blue = secondComponent;
+    //   } else if (huePrime === 3) {
+    //     red = 0;
+    //     green = secondComponent;
+    //     blue = chroma;
+    //   } else if (huePrime === 4) {
+    //     red = secondComponent;
+    //     green = 0;
+    //     blue = chroma;
+    //   } else if (huePrime === 5) {
+    //     red = chroma;
+    //     green = 0;
+    //     blue = secondComponent;
+    //   }
+    //   const lightnessAdjustment = lightness - chroma / 2;
+    //   red += lightnessAdjustment;
+    //   green += lightnessAdjustment;
+    //   blue += lightnessAdjustment;
+    //   return {
+    //     r: Math.abs(Math.round(red * 255)),
+    //     g: Math.abs(Math.round(green * 255)),
+    //     b: Math.abs(Math.round(blue * 255)),
+    //   };
+    // },
     getColors(count, hue, saturation, lightness) {
       const [start, end] = lightness;
       const incrementer = (end - start) / (count - 1);
@@ -201,8 +202,11 @@ export default {
       }
 
       return rgbArr.map((x) => {
-        const { r, g, b } = this.hslToRgb(hue, saturation, x);
-        return this.rgbToHex(r, g, b);
+        // const { r, g, b } = this.hslToRgb(hue, saturation / 100, x / 100);
+        // return this.rgbToHex(r, g, b);
+        return chroma
+          .hex(chroma(chroma.hsv([hue, saturation / 100, x / 100])))
+          .hex();
       });
     },
     getRandomIntInclusive(min, max) {
