@@ -129,7 +129,7 @@ export default {
             palette: palette.title,
             colors: palette.colors.map((color, index) => ({
               name: `${kebapCase(palette.title)}-${index * 10}`,
-              color,
+              color: color.hex,
             })),
           },
         ],
@@ -141,7 +141,7 @@ export default {
         key: `// ${palette.title}`,
         values: palette.colors.map(
           (color, index) =>
-            `$${kebapCase(palette.title)}-${index * 10}: ${color};`
+            `$${kebapCase(palette.title)}-${index * 10}: ${color.hex};`
         ),
       }));
     },

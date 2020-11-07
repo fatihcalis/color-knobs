@@ -49,7 +49,8 @@ import ColorCard from "../color-card/index";
 import Aside from "../aside/index";
 import Icon from "../shared/icon";
 import ExportModal from "./export-modal/index";
-import chroma from "chroma-js";
+// import chroma from "chroma-js";
+// import BezierEasing from "bezier-easing";
 
 const initialValues = {
   colorNumber: 12,
@@ -136,77 +137,80 @@ export default {
     update(value, name) {
       Vue.set(this.activePalette.values, name, value);
     },
-    // toHex(n) {
-    //   return (256 + n).toString(16).substr(-2);
-    // },
-    // rgbToHex(r, g, b) {
-    //   return `#${this.toHex(r)}${this.toHex(g)}${this.toHex(b)}`;
-    // },
+    toHex(n) {
+      return (256 + n).toString(16).substr(-2);
+    },
+    rgbToHex(r, g, b) {
+      return `#${this.toHex(r)}${this.toHex(g)}${this.toHex(b)}`;
+    },
 
-    // hslToRgb(hue, saturation, lightness) {
-    //   // Depends on https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB
-    //   if (hue == undefined) {
-    //     return { r: 0, g: 0, b: 0 };
-    //   }
-    //   const chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
-    //   let huePrime = hue / 60;
-    //   const secondComponent = chroma * (1 - Math.abs((huePrime % 2) - 1));
-    //   huePrime = Math.floor(huePrime);
-    //   let red, green, blue;
-    //   if (huePrime === 0) {
-    //     red = chroma;
-    //     green = secondComponent;
-    //     blue = 0;
-    //   } else if (huePrime === 1) {
-    //     red = secondComponent;
-    //     green = chroma;
-    //     blue = 0;
-    //   } else if (huePrime === 2) {
-    //     red = 0;
-    //     green = chroma;
-    //     blue = secondComponent;
-    //   } else if (huePrime === 3) {
-    //     red = 0;
-    //     green = secondComponent;
-    //     blue = chroma;
-    //   } else if (huePrime === 4) {
-    //     red = secondComponent;
-    //     green = 0;
-    //     blue = chroma;
-    //   } else if (huePrime === 5) {
-    //     red = chroma;
-    //     green = 0;
-    //     blue = secondComponent;
-    //   }
-    //   const lightnessAdjustment = lightness - chroma / 2;
-    //   red += lightnessAdjustment;
-    //   green += lightnessAdjustment;
-    //   blue += lightnessAdjustment;
-    //   return {
-    //     r: Math.abs(Math.round(red * 255)),
-    //     g: Math.abs(Math.round(green * 255)),
-    //     b: Math.abs(Math.round(blue * 255)),
-    //   };
-    // },
+    hslToRgb(hue, saturation, lightness) {
+      // Depends on https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB
+      if (hue == undefined) {
+        return { r: 0, g: 0, b: 0 };
+      }
+      const chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
+      let huePrime = hue / 60;
+      const secondComponent = chroma * (1 - Math.abs((huePrime % 2) - 1));
+      huePrime = Math.floor(huePrime);
+      let red, green, blue;
+      if (huePrime === 0) {
+        red = chroma;
+        green = secondComponent;
+        blue = 0;
+      } else if (huePrime === 1) {
+        red = secondComponent;
+        green = chroma;
+        blue = 0;
+      } else if (huePrime === 2) {
+        red = 0;
+        green = chroma;
+        blue = secondComponent;
+      } else if (huePrime === 3) {
+        red = 0;
+        green = secondComponent;
+        blue = chroma;
+      } else if (huePrime === 4) {
+        red = secondComponent;
+        green = 0;
+        blue = chroma;
+      } else if (huePrime === 5) {
+        red = chroma;
+        green = 0;
+        blue = secondComponent;
+      }
+      const lightnessAdjustment = lightness - chroma / 2;
+      red += lightnessAdjustment;
+      green += lightnessAdjustment;
+      blue += lightnessAdjustment;
+      return {
+        r: Math.abs(Math.round(red * 255)),
+        g: Math.abs(Math.round(green * 255)),
+        b: Math.abs(Math.round(blue * 255)),
+      };
+    },
     getColors(count, hue, saturation, lightness) {
       const [start, end] = lightness;
       const incrementer = (end - start) / (count - 1);
+      // const easing = BezierEasing(0, 0, 0.42, 0);
 
-      let rgbArr = [];
+      let lightnessValues = [];
+
       for (let i = start; i <= end; i = i + incrementer) {
-        rgbArr = [...rgbArr, i];
+        lightnessValues = [...lightnessValues, i];
       }
 
-      if (end !== Math.ceil(rgbArr[rgbArr.length - 1])) {
-        rgbArr = [...rgbArr, end];
+      if (end !== Math.ceil(lightnessValues[lightnessValues.length - 1])) {
+        lightnessValues = [...lightnessValues, end];
       }
 
-      return rgbArr.map((x) => {
-        // const { r, g, b } = this.hslToRgb(hue, saturation / 100, x / 100);
-        // return this.rgbToHex(r, g, b);
-        return chroma
-          .hex(chroma(chroma.hsv([hue, saturation / 100, x / 100])))
-          .hex();
+      return lightnessValues.map((l) => {
+        const { r, g, b } = this.hslToRgb(hue, saturation / 100, l / 100);
+
+        return {
+          hex: this.rgbToHex(r, g, b),
+          hsl: `hsl(${hue},${saturation}%,${l}%)`,
+        };
       });
     },
     getRandomIntInclusive(min, max) {

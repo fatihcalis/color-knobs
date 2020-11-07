@@ -20,9 +20,9 @@
     <div class="color-card__palatte">
       <div
         v-for="color in colors"
-        :key="color"
+        :key="color.hex"
         class="color-card__palatte__box"
-        :style="{ backgroundColor: color }"
+        :style="{ backgroundColor: color.hsl }"
       />
     </div>
     <div class="color-card__shadow" />
