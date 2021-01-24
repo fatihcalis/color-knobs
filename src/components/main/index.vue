@@ -49,8 +49,7 @@ import ColorCard from "../color-card/index";
 import Aside from "../aside/index";
 import Icon from "../shared/icon";
 import ExportModal from "./export-modal/index";
-// import chroma from "chroma-js";
-// import BezierEasing from "bezier-easing";
+import BezierEasing from "bezier-easing";
 
 const initialValues = {
   colorNumber: 12,
@@ -191,20 +190,17 @@ export default {
     },
     getColors(count, hue, saturation, lightness) {
       const [start, end] = lightness;
-      const incrementer = (end - start) / (count - 1);
-      // const easing = BezierEasing(0, 0, 0.42, 0);
 
-      let lightnessValues = [];
+      const curvedLightness = [...Array(count)]
+        .map((_, index) => index)
+        .map((value) => {
+          // const easing = BezierEasing(...[0.47, 0, 0.745, 0.715]); // easeInSine
+          const easing = BezierEasing(...[0.5, 0.5, 0.5, 0.5]); // linear
+          return easing(parseInt(value, 10) / (count - 1));
+        })
+        .map((lightness) => start + lightness * (end - start));
 
-      for (let i = start; i <= end; i = i + incrementer) {
-        lightnessValues = [...lightnessValues, i];
-      }
-
-      if (end !== Math.ceil(lightnessValues[lightnessValues.length - 1])) {
-        lightnessValues = [...lightnessValues, end];
-      }
-
-      return lightnessValues.map((l) => {
+      return curvedLightness.map((l) => {
         const { r, g, b } = this.hslToRgb(hue, saturation / 100, l / 100);
 
         return {
