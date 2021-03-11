@@ -195,7 +195,8 @@ export default {
         .map((_, index) => index)
         .map((value) => {
           // const easing = BezierEasing(...[0.47, 0, 0.745, 0.715]); // easeInSine
-          const easing = BezierEasing(...[0.5, 0.5, 0.5, 0.5]); // linear
+          // const easing = BezierEasing(...[0.5, 0.5, 0.5, 0.5]); // linear
+          const easing = BezierEasing(...[0.50, 0.41, 0.41, 0.75]); // Best bezier
           return easing(parseInt(value, 10) / (count - 1));
         })
         .map((lightness) => start + lightness * (end - start));
