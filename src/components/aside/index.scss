@@ -34,7 +34,6 @@ aside {
     animation: settings-in 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     transform: translate(0, -100px);
     opacity: 0;
-    // animation-delay: 0.5s;
 
     &__header {
       display: flex;
@@ -42,7 +41,7 @@ aside {
       flex: 0 0 auto;
       width: 100%;
       height: auto;
-      padding: 15px 20px;
+      padding: 10px 18px 10px 25px;
       background-color: $l-background;
       border-bottom: 1px solid #dde2e8;
       border-radius: 18px 18px 0 0;
@@ -60,7 +59,7 @@ aside {
         position: relative;
         display: block;
         flex: 1 1 auto;
-        height: 28px;
+        height: 32px;
         padding: 0 8px;
         margin-left: -8px;
         margin-right: 10px;
@@ -76,6 +75,10 @@ aside {
         &:focus {
           outline: none;
         }
+      }
+
+      button + button {
+        margin-left: 4px;
       }
     }
 
