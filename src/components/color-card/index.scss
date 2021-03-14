@@ -103,9 +103,9 @@
     height: 28px;
     margin-bottom: 14px;
     animation: color-card-header-in 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    animation-delay: 0.1s;
+    // animation-delay: 0.1s;
     opacity: 0;
-    transform: translate(0, -30px);
+    // transform: translate(0, -30px);
 
     label {
       display: inline-block;
@@ -116,7 +116,7 @@
     }
 
     button.ghost-btn {
-      transition: all 0.2s ease-in-out;
+      transition: all 0.1s ease-in-out;
       opacity: 0;
     }
   }
@@ -199,6 +199,9 @@
     transform: translate(0, -30px);
     opacity: 0;
   }
+  20% {
+    opacity: 0;
+  }
   100% {
     opacity: 1;
     transform: translate(0, 0);
@@ -240,8 +243,11 @@
     opacity: 1;
     transform: translate(0, 0);
   }
+  40% {
+    opacity: 0;
+  }
   100% {
-    transform: translate(0, -30px);
+    transform: translate(0, -10px);
     opacity: 0;
   }
 }
